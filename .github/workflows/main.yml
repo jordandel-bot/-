@@ -1,77 +1,189 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
- on:
-  push:
-    branches:
-    - main
-    - release/*
-on:
-  pull_request:
-    branches:
-on:
-  schedule:
-  - cron: "0 2 * * 1-5"
-on:
-  workflow_dispatch:  
-jobs:
-  my_job:
-    name: deploy to staging
-    runs-on: ubuntu-22.04
-- name: Setup Node
-  uses: actions/setup-node@v4
+title: "ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 - Fondation SCP RP"
+lang: "fr"
+meta:
+  charset: "UTF-8"
+  viewport: "width=device-width, initial-scale=1.0"
+  description: "ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 - Jeu de rôle immersif dans l'univers de la Fondation SCP. Rejoignez la communauté, créez votre personnage, participez à des scénarios originaux et vivez des aventures uniques dans un environnement collaboratif et sécurisé !"
+  keywords: "SCP, RP, Roleplay, Fondation SCP, jeu de rôle, communauté, NeXoR.Studio, scénario, personnage, anomalie, sécurité, immersion, univers, forum, Discord, archives, mission, créativité, collaboration, expérience, science-fiction, horreur, mystère, aventure, français, guide, ressource, tutoriel, exemple, archive, fiche, mission, objet anormal, journal, staff, modération, règles, sécurité, accessibilité, PWA, SEO, réseaux sociaux"
+  author: "NeXoR.Studio"
+  robots: "index, follow"
+  theme-color: "#181818"
+  og:
+    title: "ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 - Fondation SCP RP"
+    description: "Participez à un RP SCP immersif, créez votre personnage, explorez des scénarios captivants, échangez avec la communauté et découvrez des ressources inédites."
+    image: "https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico"
+    type: "website"
+    url: "https://nexor.studio/complexe25"
+    locale: "fr_FR"
+    site_name: "ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝"
+  twitter:
+    card: "summary_large_image"
+    title: "ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 - Fondation SCP RP"
+    description: "Rejoignez la communauté RP SCP, vivez des aventures inoubliables, partagez vos créations et bénéficiez d’un accompagnement personnalisé."
+    image: "https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico"
+    site: "@nexorstudio"
+    creator: "@nexorstudio"
+links:
+  - rel: "icon"
+    href: "https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico"
+    type: "image/x-icon"
+  - rel: "apple-touch-icon"
+    sizes: "180x180"
+    href: "https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico"
+  - rel: "icon"
+    type: "image/png"
+    sizes: "32x32"
+    href: "https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico"
+  - rel: "icon"
+    type: "image/png"
+    sizes: "16x16"
+    href: "https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico"
+  - rel: "shortcut icon"
+    href: "https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico"
+  - rel: "manifest"
+    href: "/manifest.json"
+  - rel: "stylesheet"
+    href: "https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
+  - rel: "stylesheet"
+    href: "https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap"
+application-name: "ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝"
+apple-mobile-web-app-title: "ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝"
+apple-mobile-web-app-capable: "yes"
+apple-mobile-web-app-status-bar-style: "black-translucent"
+structured-data:
+  "@context": "https://schema.org"
+  "@type": "WebSite"
+  name: "ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 - Fondation SCP RP"
+  url: "https://nexor.studio/complexe25"
+  description: "Participez à un RP SCP immersif, créez votre personnage, explorez des scénarios captivants, échangez avec la communauté et découvrez des ressources inédites."
+  publisher:
+    "@type": "Organization"
+    name: "NeXoR.Studio"
+    logo:
+      "@type": "ImageObject"
+      url: "https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico"
+  potentialAction:
+    "@type": "SearchAction"
+    target: "https://nexor.studio/complexe25?search={search_term_string}"
+    query-input: "required name=search_term_string"
+style: |
+  [CSS styles omitted for brevity]
+body:
+  skip-link: "Aller au contenu principal"
+  container:
+    id: "mainContent"
+    title: "ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝"
+    welcome-message: true
+    random-tip:
+      button: "Astuce RP aléatoire"
+      close: "✕"
+      tips: [ ... ] # Liste d'astuces RP (voir code source)
+    sections:
+      - type: "accordion"
+        label: "Description"
+        id: "descPanel"
+        content: [ ... ] # Liste des points de description
+      - type: "accordion"
+        label: "Comment participer"
+        id: "partPanel"
+        content: [ ... ] # Liste des étapes pour participer
+      - type: "accordion"
+        label: "Comment créer un personnage"
+        id: "charPanel"
+        content: [ ... ] # Liste des étapes pour créer un personnage
+      - type: "accordion"
+        label: "Règles du RP SCP"
+        id: "rulesPanel"
+        content: [ ... ] # Liste des règles
+      - type: "accordion"
+        label: "Exemples et Archives"
+        id: "exPanel"
+        content: [ ... ] # Exemples de personnages, archives, missions, etc.
+      - type: "accordion"
+        label: "📜 Règlement Officiel 📜"
+        id: "discordRulesPanel"
+        content: [ ... ] # Règlement Discord détaillé
+      - type: "accordion"
+        label: "Ressources utiles"
+        id: "resPanel"
+        content:
+          - name: "SCP Wiki"
+            url: "https://scp-wiki.wikidot.com/"
+          - name: "SCP Roleplay"
+            url: "https://scp-roleplay.com/"
+          - name: "Reddit SCP"
+            url: "https://www.reddit.com/r/SCP/"
+          - name: "Discord SCP"
+            url: "https://discord.gg/scp"
+          - name: "YouTube SCP Roleplay"
+            url: "https://www.youtube.com/results?search_query=scp+roleplay"
+          - name: "Twitch SCP Roleplay"
+            url: "https://www.twitch.tv/directory/game/SCP%20Roleplay"
+          - name: "Fandom SCP"
+            url: "https://www.fandom.com/f/scp"
+          - name: "SCP International"
+            url: "https://scp-int.wikidot.com/"
+          - name: "SCP Foundation Wiki"
+            url: "https://scp-foundation.fandom.com/wiki/SCP_Foundation_Wiki"
+          - name: "SCP Patreon"
+            url: "https://www.patreon.com/scp"
+          - name: "SCP Catalogue"
+            url: "https://scp-catalogue.com/"
+          - name: "SCP Archive"
+            url: "https://scp-archive.wikidot.com/"
+          - name: "Notre Discord"
+            url: "https://discord.gg/RqM7Nvam2R"
+      - type: "accordion"
+        label: "Conclusion"
+        id: "conclPanel"
+        content: [ ... ] # Texte de conclusion
+  discord-logo:
+    url: "https://discord.gg/RqM7Nvam2R"
+    icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg"
+  scroll-to-top:
+    label: "Remonter en haut"
+footer:
+  copyright: "© 2025 ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝"
+  links:
+    - label: "Description"
+      href: "#descPanel"
+    - label: "Participer"
+      href: "#partPanel"
+    - label: "Personnage"
+      href: "#charPanel"
+    - label: "Règles"
+      href: "#rulesPanel"
+    - label: "Ressources"
+      href: "#resPanel"
+  credits: "Site conçu, développé et optimisé par NeXoR.Studio | Hébergement sécurisé | Support technique : support@nexor.studio"
+  update: "Dernière mise à jour : Juin 2025 | Version 1.2.0 | Compatible mobile, tablette et desktop | Accessibilité renforcée | Optimisé SEO & réseaux sociaux"
+scripts:
+  - welcome-message: true
+  - accordion: true
+            - name: Cache
+  uses: actions/cache@v4.2.3
   with:
-    node-version: '20.x'
-- name: Install Dependencies
-  run: npm install
-jobs:
-  test:
-    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node_version: ['18.x', '20.x']
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node_version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node_version }}
-
-    - name: npm install, build and test
-      run: |
-        npm install
-        npm run build --if-present
-        npm test
-    steps:
-- run: npm publish
-  if: github.event_name == 'push'
-         - name: Setup Node.js environment
-  uses: actions/setup-node@v3.9.1
-  with:
-    # Set always-auth in npmrc.
-    always-auth: # optional, default is false
-    # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
-    node-version: # optional
-    # File containing the version Spec of the version to use.  Examples: .nvmrc, .node-version, .tool-versions.
-    node-version-file: # optional
-    # Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
-    architecture: # optional
-    # Set this option if you want the action to check for the latest available version that satisfies the version spec.
-    check-latest: # optional
-    # Optional registry to set up for auth. Will set the registry in a project level .npmrc and .yarnrc file, and set up auth to read in from env.NODE_AUTH_TOKEN.
-    registry-url: # optional
-    # Optional scope for authenticating against scoped registries. Will fall back to the repository owner when using the GitHub Packages registry (https://npm.pkg.github.com/).
-    scope: # optional
-    # Used to pull node distributions from node-versions. Since there's a default, this is typically not supplied by the user. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.
-    token: # optional, default is ${{ github.server_url == 'https://github.com' && github.token || '' }}
-    # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
-    cache: # optional
-    # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
-    cache-dependency-path: # optional
-                - name: Upload a Build Artifact
+    # A list of files, directories, and wildcard patterns to cache and restore
+    path: 
+    # An explicit key for restoring and saving the cache
+    key: 
+    # An ordered multiline string listing the prefix-matched keys, that are used for restoring stale cache if no cache hit occurred for key. Note `cache-hit` returns false in this case.
+    restore-keys: # optional
+    # The chunk size used to split up large files during upload, in bytes
+    upload-chunk-size: # optional
+    # An optional boolean when enabled, allows windows runners to save or restore caches that can be restored or saved respectively on other platforms
+    enableCrossOsArchive: # optional, default is false
+    # Fail the workflow if cache entry is not found
+    fail-on-cache-miss: # optional, default is false
+    # Check if a cache entry exists for the given input(s) (key, restore-keys) without downloading the cache
+    lookup-only: # optional, default is false
+    # Run the post step to save the cache even if another step before fails
+    save-always: # optional, default is false
+          
+  - random-tip: true
+  - scroll-to-top: true
+  - security: true
+            - name: Upload a Build Artifact
   uses: actions/upload-artifact@v4.6.2
   with:
     # Artifact name
@@ -98,801 +210,78 @@ Minimum 1 day. Maximum 90 days unless changed from the repository settings page.
     # If true, hidden files will be included in the artifact. If false, hidden files will be excluded from the artifact.
 
     include-hidden-files: # optional, default is false
-                - name: Setup Java JDK
-  uses: actions/setup-java@v3.14.1
+            - name: First interaction
+  uses: actions/first-interaction@v1.3.0
   with:
-    # The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file
-    java-version: # optional
-    # The path to the `.java-version` file. See examples of supported syntax in README file
-    java-version-file: # optional
-    # Java distribution. See the list of supported distributions in README file
-    distribution: 
-    # The package type (jdk, jre, jdk+fx, jre+fx)
-    java-package: # optional, default is jdk
-    # The architecture of the package (defaults to the action runner's architecture)
-    architecture: # optional
-    # Path to where the compressed JDK is located
-    jdkFile: # optional
-    # Set this option if you want the action to check for the latest available version that satisfies the version spec
-    check-latest: # optional
-    # ID of the distributionManagement repository in the pom.xml file. Default is `github`
-    server-id: # optional, default is github
-    # Environment variable name for the username for authentication to the Apache Maven repository. Default is $GITHUB_ACTOR
-    server-username: # optional, default is GITHUB_ACTOR
-    # Environment variable name for password or token for authentication to the Apache Maven repository. Default is $GITHUB_TOKEN
-    server-password: # optional, default is GITHUB_TOKEN
-    # Path to where the settings.xml file will be written. Default is ~/.m2.
-    settings-path: # optional
-    # Overwrite the settings.xml file if it exists. Default is "true".
-    overwrite-settings: # optional, default is true
-    # GPG private key to import. Default is empty string.
-    gpg-private-key: # optional
-    # Environment variable name for the GPG private key passphrase. Default is $GPG_PASSPHRASE.
-    gpg-passphrase: # optional
-    # Name of the build platform to cache dependencies. It can be "maven", "gradle" or "sbt".
-    cache: # optional
-    # Workaround to pass job status to post job step. This variable is not intended for manual setting
-    job-status: # optional, default is ${{ job.status }}
-    # The token used to authenticate when fetching version manifests hosted on github.com, such as for the Microsoft Build of OpenJDK. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.
-    token: # optional, default is ${{ github.server_url == 'https://github.com' && github.token || '' }}
-    # Name of Maven Toolchain ID if the default name of "${distribution}_${java-version}" is not wanted. See examples of supported syntax in Advanced Usage file
-    mvn-toolchain-id: # optional
-    # Name of Maven Toolchain Vendor if the default name of "${distribution}" is not wanted. See examples of supported syntax in Advanced Usage file
-    mvn-toolchain-vendor: # optional
-                - name: Download a Build Artifact
-  uses: actions/download-artifact@v4.3.0
-  with:
-    # Name of the artifact to download. If unspecified, all artifacts for the run are downloaded.
-    name: # optional
-    # IDs of the artifacts to download, comma-separated. Either inputs `artifact-ids` or `name` can be used, but not both.
-    artifact-ids: # optional
-    # Destination path. Supports basic tilde expansion. Defaults to $GITHUB_WORKSPACE
-    path: # optional
-    # A glob pattern matching the artifacts that should be downloaded. Ignored if name is specified.
-    pattern: # optional
-    # When multiple artifacts are matched, this changes the behavior of the destination directories. If true, the downloaded artifacts will be in the same directory specified by path. If false, the downloaded artifacts will be extracted into individual named directories within the specified path.
-    merge-multiple: # optional, default is false
-    # The GitHub token used to authenticate with the GitHub API. This is required when downloading artifacts from a different repository or from a different workflow run. If this is not specified, the action will attempt to download artifacts from the current repository and the current workflow run.
-    github-token: # optional
-    # The repository owner and the repository name joined together by "/". If github-token is specified, this is the repository that artifacts will be downloaded from.
-    repository: # optional, default is ${{ github.repository }}
-    # The id of the workflow run where the desired download artifact was uploaded from. If github-token is specified, this is the run that artifacts will be downloaded from.
-    run-id: # optional, default is ${{ github.run_id }}
-                - name: Setup Go environment
-  uses: actions/setup-go@v5.5.0
-  with:
-    # The Go version to download (if necessary) and use. Supports semver spec and ranges. Be sure to enclose this option in single quotation marks.
-    go-version: # optional
-    # Path to the go.mod or go.work file.
-    go-version-file: # optional
-    # Set this option to true if you want the action to always check for the latest available version that satisfies the version spec
-    check-latest: # optional
-    # Used to pull Go distributions from go-versions. Since there's a default, this is typically not supplied by the user. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.
-    token: # optional, default is ${{ github.server_url == 'https://github.com' && github.token || '' }}
-    # Used to specify whether caching is needed. Set to true, if you'd like to enable caching.
-    cache: # optional, default is true
-    # Used to specify the path to a dependency file - go.sum
-    cache-dependency-path: # optional
-    # Target architecture for Go to use. Examples: x86, x64. Will use system architecture by default.
-    architecture: # optional
-               - name: New Relic JUnit Reporter
+    # Token for the repository. Can be passed in using {{ secrets.GITHUB_TOKEN }}
+    repo-token: 
+    # Comment to post on an individual's first issue
+    issue-message: # optional
+    # Comment to post on an individual's first pull request
+    pr-message: # optional
+            - name: Netlify Deploy
   # You may pin to the exact commit or the version.
-  # uses: newrelic/junit-reporter-action@a225f3d3753f08921149ddd803040fe593c4ad5c
-  uses: newrelic/junit-reporter-action@v0.3.0
+  # uses: jsmrcaga/action-netlify-deploy@0f0941d68f55a7268a8258b2a367190f17116a39
+  uses: jsmrcaga/action-netlify-deploy@v2.2.0
   with:
-    # Your New Relic Ingest License key.
-    ingestLicenseKey: 
-    # Your New Relic account ID. Custom events representing your test run will be posted to this account.
-    accountId: 
-    # The geographical region for your New Relic account - US or EU. Default: US
-    region: # optional, default is US
-    # The path to the JUnit output file.
-    testOutputPath: 
-    # Any custom attributes to include in JSON format.
-    customAttributes: # optional
-             - name: Quality Clouds Build Check for Servicenow
+    # Auth token to use with netlify
+    NETLIFY_AUTH_TOKEN: # default is 
+    # Your Netlify site id
+    NETLIFY_SITE_ID: # default is 
+    # Should the site be deployed to production?
+    NETLIFY_DEPLOY_TO_PROD: # optional
+    # A deploy message
+    NETLIFY_DEPLOY_MESSAGE: # optional, default is 
+    # When provided, prints more debug info in NETLIFY_OUTPUT
+    debug: # optional, default is 
+    # Directory where built files are stored
+    build_directory: # default is build
+    # Directory where built files are stored
+    functions_directory: # optional, default is 
+    # Command to install dependencies
+    install_command: # optional, default is 
+    # Path to netlify CLI binary
+    netlify_path: # optional, default is netlify
+    # Command to build static website
+    build_command: # optional, default is npm run build
+    # Deployment Subdomain name
+    deploy_alias: # optional, default is 
+    # In monorepos, package to deploy
+    monorepo_package: # optional, default is 
+    # Any optional extra flags added to Netlify deploy command
+    command_extra_flags: # optional, default is 
+              - name: YAML Lint
   # You may pin to the exact commit or the version.
-  # uses: qualityclouds/action-application-scan@4d7fb9d7fb5f21c8379a6a55b36aff5a61b582a3
-  uses: qualityclouds/action-application-scan@1.0.0
+  # uses: ibiqlik/action-yamllint@2576378a8e339169678f9939646ee3ee325e845c
+  uses: ibiqlik/action-yamllint@v3.1.1
   with:
-    # You need to provide a valid API key to connect the Quality Clouds ruleset against which your code will be checked
-    token: 
-    # The instance url
-    instance_url: 
-    # Use cloud mode to runh a Feature branch scan
-    mode: # optional
-    # Use cloud mode to runh a Feature branch scan
-    api_url: # optional
-            - name: Use Depot
+    # File(s) or Directory, separate by space if multiple files or folder are specified
+    file_or_dir: # optional
+    # Path to custom configuration
+    config_file: # optional
+    # Custom configuration (as YAML source)
+    config_data: # optional
+    # Format for parsing output [parsable,standard,colored,github,auto]
+    format: # optional, default is parsable
+    # Return non-zero exit code on warnings as well as errors
+    strict: # optional, default is false
+    # Output only error level problems
+    no_warnings: # optional, default is false
+               - name: Action YAML Linter
   # You may pin to the exact commit or the version.
-  # uses: depot/use-action@90146d58d088d969746f73da293453f402eeee13
-  uses: depot/use-action@v1.2.0
+  # uses: kustomize-everything/action-yaml-linter@2a33f0d0765ab5dfe5db3b0fcc4a5d4fdd99cf5c
+  uses: kustomize-everything/action-yaml-linter@v3.2.0
   with:
-    # Version of the Depot CLI to install. If unspecified or set to "latest",
-the latest version for the target platform will be installed. Example: "0.0.2".
-    version: # optional, default is latest
-    # If set, will populate the `DEPOT_PROJECT_ID` environment variable.
-    project: # optional, default is 
-    # If set, will populate the `DEPOT_TOKEN` environment variable.
-    token: # optional, default is 
-            - name: 42Crunch API Conformance Scan
-  # You may pin to the exact commit or the version.
-  # uses: 42Crunch/cicd-github-actions@e2c9a02bb391932aee6ef994de06ff2c7aae9ff6
-  uses: 42Crunch/cicd-github-actions@v1
-  with:
-    # API token to access 42Crunch Platform. Check https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm for details
-    api-token: 
-    # 42Crunch platform URL
-    platform-url: # optional, default is https://platform.42crunch.com
-    # Path to JSON report from audit step
-    audit-report-path: 
-    # List of API UUIDs to use
-    api-ids: # optional
-    # Path to save sarif report, add 'Convert to sarif' stage
-    convert-to-sarif: # optional
-    # Add 'Upload sarif' and 'Convert to sarif' stage
-    upload-sarif: # optional
-    # Add 'Check sqg' stage
-    check-sqg: # optional
-    # GitHub token for uploading results to Github Code Scanning
-    github-token: # optional, default is ${{ github.token }}
-            - name: Paperspace Deploy
-  # You may pin to the exact commit or the version.
-  # uses: Paperspace/deploy-action@e19c92caa3220cff5d5bf62f86832c0d87745612
-  uses: Paperspace/deploy-action@v1.4
-  with:
-    # Paperspace API Key. Defaults to env.PAPERSPACE_API_KEY.
-    apiKey: # optional
-    # Project ID that the deployment lives under.
-    projectId: 
-    # Relative path to configuration file to deploy.
-    configPath: # optional
-    # Optional container image to use for the deployment.
-    image: # optional
-            - name: Docker Build Tag Publish to ECR
-  # You may pin to the exact commit or the version.
-  # uses: bitovi/github-actions-docker-ecr-publish@bcaf3fb11bafbc6ae884516e92f870ac11a5ae68
-  uses: bitovi/github-actions-docker-ecr-publish@v0.1.0
-  with:
-    # Checkout the repository
-    checkout: # optional, default is true
-    # Use action builtin login
-    aws_login: # optional, default is true
-    # AWS access key ID
-    aws_access_key_id: 
-    # AWS secret access key
-    aws_secret_access_key: 
-    # AWS session token
-    aws_session_token: # optional
-    # AWS default region
-    aws_default_region: # optional, default is us-east-1
-    # AWS ECR repository name. e.g. hello-repository
-    aws_ecr_repo_name: 
-    # Tag to override default Logic
-    image_tag: # optional, default is 
-    # Use the SHA for the tag.  Overrides the default logic.
-    use_sha: # optional
-    # Docker org name.
-    org_name: # optional, default is 
-    # Tag default branch with latest tag instead of branch name.
-    use_latest: # optional, default is true
-    # Add a string of values to the end of the build command
-    build_args: # optional
-    # Specify the working directory that the docker build will be run in
-    working_directory: # optional
-                                        
-    
-    - main
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 - Fondation SCP RP</title>
-    <meta name="description" content="ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 - Jeu de rôle immersif dans l'univers de la Fondation SCP. Rejoignez la communauté, créez votre personnage, participez à des scénarios originaux et vivez des aventures uniques dans un environnement collaboratif et sécurisé !">
-    <meta name="keywords" content="SCP, RP, Roleplay, Fondation SCP, jeu de rôle, communauté, NeXoR.Studio, scénario, personnage, anomalie, sécurité, immersion, univers, forum, Discord, archives, mission, créativité, collaboration, expérience, science-fiction, horreur, mystère, aventure, français, guide, ressource, tutoriel, exemple, archive, fiche, mission, objet anormal, journal, staff, modération, règles, sécurité, accessibilité, PWA, SEO, réseaux sociaux">
-    <meta name="author" content="NeXoR.Studio">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#181818">
-    <meta property="og:title" content="ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 - Fondation SCP RP">
-    <meta property="og:description" content="Participez à un RP SCP immersif, créez votre personnage, explorez des scénarios captivants, échangez avec la communauté et découvrez des ressources inédites.">
-    <meta property="og:image" content="https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nexor.studio/complexe25">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="og:site_name" content="ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 - Fondation SCP RP">
-    <meta name="twitter:description" content="Rejoignez la communauté RP SCP, vivez des aventures inoubliables, partagez vos créations et bénéficiez d’un accompagnement personnalisé.">
-    <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico">
-    <meta name="twitter:site" content="@nexorstudio">
-    <meta name="twitter:creator" content="@nexorstudio">
-    <link rel="icon" href="https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico">
-    <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="application-name" content="ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝">
-    <meta name="apple-mobile-web-app-title" content="ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
-    <!-- Données structurées JSON-LD pour SEO avancé -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "NeXoR.Studio",
-        "url": "https://nexor.studio/complexe25",
-        "logo": "https://cdn.discordapp.com/attachments/123456789012345678/123456789012345678/favicon.ico",
-        "sameAs": [
-            "https://discord.gg/RqM7Nvam2R",
-            "https://twitter.com/nexorstudio"
-        ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝",
-        "url": "https://nexor.studio/complexe25",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://nexor.studio/complexe25/?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
-    }
-    </script>
-    <!-- Styles -->
-    <style>
-        /* ... styles inchangés ... */
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #111;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            background-image: url('file:///C:/Users/jorda/OneDrive/Images/Captures%20d’écran/Capture%20d\'écran%202025-06-07%20214205.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-        }
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
-            background: #181818;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-        }
-        h1, h2, h3 {
-            color: #ff0707;
-            margin-top: 1.5em;
-        }
-        a {
-            color: #ff0707;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        ul, ol {
-            margin-bottom: 1em;
-            margin-left: 2em;
-        }
-        button {
-            background: #ff0707;
-            color: #fff;
-            border: none;
-            padding: 0.5em 1.2em;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 1em;
-            font-size: 1em;
-            transition: background 0.2s, transform 0.2s;
-        }
-        button:hover {
-            background: #fb0101;
-            transform: scale(1.04);
-        }
-        .message {
-            color: #00c3ff;
-            font-weight: bold;
-            margin: 1em 0;
-        }
-        .hidden {
-            display: none;
-        }
-        .accordion {
-            background: #222;
-            color: #fff;
-            cursor: pointer;
-            padding: 0.7em 1em;
-            width: 100%;
-            border: none;
-            outline: none;
-            text-align: left;
-            font-size: 1.1em;
-            transition: background 0.2s;
-            margin-bottom: 0.2em;
-            border-radius: 4px;
-        }
-        .accordion.active, .accordion:hover {
-            background: #333;
-        }
-        .panel {
-            padding: 0 1em;
-            background: #191919;
-            display: block;
-            overflow: hidden;
-            border-radius: 0 0 4px 4px;
-            margin-bottom: 1em;
-            max-height: 0;
-            transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1);
-        }
-        .panel.show {
-            animation: fadeIn 0.4s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0;}
-            to { opacity: 1;}
-        }
-        /* Footer */
-        footer {
-            background: #181818;
-            color: #aaa;
-            text-align: center;
-            padding: 1.2em 0 1em 0;
-            font-size: 0.95em;
-            border-radius: 0 0 10px 10px;
-            margin-top: 40px;
-            box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
-        }
-        footer a {
-            color: #ff0707;
-            margin: 0 0.5em;
-        }
-        /* Scroll to top button */
-        #toTopBtn {
-            display: none;
-            position: fixed;
-            bottom: 90px;
-            right: 32px;
-            z-index: 1001;
-            background: #ff0707;
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            font-size: 1.5em;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            transition: background 0.2s, transform 0.2s;
-        }
-        #toTopBtn:hover {
-            background: #fb0101;
-            transform: scale(1.1);
-        }
-        /* Discord logo animation */
-        .discord-float {
-            animation: float 2.5s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0);}
-            50% { transform: translateY(-8px);}
-        }
-        /* Responsive */
-        @media (max-width: 1000px) {
-            .container { max-width: 98vw; padding: 10px;}
-        }
-        @media (max-width: 600px) {
-            .container { padding: 4vw;}
-            h1 { font-size: 1.5em;}
-            .accordion { font-size: 1em;}
-        }
-    </style>
-</head>
-<body>
-    <a href="#mainContent" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Aller au contenu principal</a>
-    <div class="container" id="mainContent">
-        <h1>ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝</h1>
-        <p class="message" id="welcomeMsg"></p>
-        <button id="randomTipBtn" aria-controls="randomTip" aria-expanded="false">Astuce RP aléatoire</button>
-        <button id="closeTipBtn" style="display:none;margin-left:10px;">✕</button>
-        <div class="message" id="randomTip" style="display:none;" aria-live="polite"></div>
-        <!-- Accordéons et panels -->
-        <button class="accordion" aria-expanded="false" aria-controls="descPanel">Description</button>
-        <div class="panel" id="descPanel">
-            <h2>Description</h2>
-            <ul>
-                <li>ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 est un projet de jeu de rôle basé sur l'univers de la Fondation SCP, une organisation fictive dédiée à la recherche et à la containment d'objets et d'entités anormales.</li>
-                <li>Le Role Play (RP) est une activité où les participants incarnent des personnages fictifs et interagissent dans un univers imaginaire en respectant des règles précises. Dans le contexte de la Fondation SCP, il s'agit d'une organisation secrète fictive chargée de contenir et d'étudier des phénomènes paranormaux appelés "SCP". Les joueurs prennent le rôle de membres de la Fondation ou d'autres groupes, et vivent des scénarios immersifs autour de la gestion de ces anomalies.</li>
-                <li>Le RP SCP est souvent pratiqué en ligne, où les joueurs peuvent écrire des histoires, participer à des forums ou utiliser des plateformes de jeu de rôle. Les interactions sont basées sur la narration collaborative, où chaque participant contribue à l'évolution de l'histoire en respectant les caractéristiques et les limites de leur personnage.</li>
-                <li>Les règles du RP SCP incluent généralement le respect de l'univers établi, la cohérence des actions des personnages, et la collaboration entre les joueurs pour créer une expérience immersive et engageante. Les participants doivent également être conscients des implications de leurs actions dans le contexte de la Fondation SCP et des autres groupes impliqués.</li>
-                <li>En somme, le RP SCP est une forme de jeu de rôle qui permet aux participants d'explorer des thèmes de science-fiction, d'horreur et de mystère, tout en développant des compétences narratives et collaboratives.</li>
-                <li>Pour en savoir plus sur le RP SCP, vous pouvez consulter les ressources disponibles sur les forums dédiés, les wikis de la Fondation SCP, ou rejoindre des communautés en ligne où les joueurs partagent leurs expériences et créent des histoires ensemble.</li>
-                <li>ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 est un projet de jeu de rôle basé sur l'univers de la Fondation SCP, où les joueurs peuvent explorer des thèmes complexes et immersifs à travers des scénarios captivants.</li>
-                <li>Pour participer, il est recommandé de lire les règles du RP SCP, de se familiariser avec les différents SCP et de rejoindre une communauté active pour échanger des idées et des histoires.</li>
-                <li>ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 est une invitation à plonger dans un monde de mystère et d'aventure, où chaque joueur peut contribuer à la création d'histoires uniques et mémorables.</li>
-                <li>Rejoignez-nous dans cette aventure passionnante et découvrez les secrets de la Fondation SCP à travers le RP SCP !</li>
-                <li>ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 est plus qu'un simple jeu de rôle, c'est une expérience immersive qui permet aux joueurs de vivre des histoires palpitantes et de développer leur créativité.</li>
-                <li>Nous vous attendons avec impatience pour explorer ensemble cet univers fascinant !</li>
-            </ul>
-        </div>
-        <button class="accordion" aria-expanded="false" aria-controls="partPanel">Comment participer</button>
-        <div class="panel" id="partPanel">
-            <h2>Comment participer</h2>
-            <p>Pour participer à ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝, il est conseillé de suivre ces étapes :</p>
-            <ol>
-                <li>Lire les règles du RP SCP et se familiariser avec l'univers de la Fondation SCP.</li>
-                <li>Créer un personnage en respectant les guidelines établies par la communauté.</li>
-                <li>Rejoindre une plateforme de jeu de rôle ou un forum dédié au RP SCP.</li>
-                <li>Participer aux discussions et aux scénarios en cours, en respectant les autres joueurs et l'univers de jeu.</li>
-                <li>Contribuer à l'évolution des histoires en écrivant des récits, en jouant des scènes ou en interagissant avec d'autres personnages.</li>
-                <li>Respecter les règles de conduite et de sécurité pour garantir une expérience agréable pour tous.</li>
-                <li>Être ouvert aux retours et aux suggestions des autres joueurs pour améliorer l'expérience de jeu.</li>
-                <li>Participer régulièrement aux sessions de jeu pour maintenir l'engagement et la continuité des histoires.</li>
-                <li>Partager vos expériences et vos créations avec la communauté pour enrichir l'univers du RP SCP.</li>
-                <li>Profiter de l'expérience immersive et collaborative que propose ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 !</li>
-            </ol>
-        </div>
-        <button class="accordion" aria-expanded="false" aria-controls="charPanel">Comment créer un personnage</button>
-        <div class="panel" id="charPanel">
-            <h2>Comment créer un personnage</h2>
-            <p>Pour créer un personnage dans ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝, suivez ces étapes :</p>
-            <ol>
-                <li>Choisissez un rôle ou une fonction au sein de la Fondation SCP (chercheur, agent de sécurité, membre du personnel D, etc.).</li>
-                <li>Définissez le nom, l'âge, l'apparence et les traits de caractère de votre personnage.</li>
-                <li>Rédigez une courte biographie expliquant le passé, les motivations et les compétences de votre personnage.</li>
-                <li>Respectez les règles et l'univers de la Fondation SCP lors de la création de votre personnage.</li>
-                <li>Présentez votre personnage à la communauté pour obtenir des retours et l'intégrer aux scénarios en cours.</li>
-                <li>Adaptez votre personnage en fonction des interactions avec les autres joueurs et des événements du RP.</li>
-                <li>Assurez-vous que votre personnage est cohérent avec l'univers de la Fondation SCP et les autres personnages.</li>
-                <li>Évitez les personnages trop puissants ou invincibles pour garantir un équilibre dans le jeu.</li>
-                <li>Utilisez les compétences et les traits de caractère de votre personnage pour enrichir les interactions et les histoires.</li>
-                <li>Amusez-vous et profitez de l'expérience de jeu en incarnant votre personnage dans les scénarios du RP SCP !</li>
-            </ol>
-        </div>
-        <button class="accordion" aria-expanded="false" aria-controls="rulesPanel">Règles du RP SCP</button>
-        <div class="panel" id="rulesPanel">
-            <h2>Règles du RP SCP</h2>
-            <p>Les règles du RP SCP sont essentielles pour garantir une expérience de jeu immersive et respectueuse. Voici quelques-unes des règles les plus importantes :</p>
-            <ol>
-                <li>Respectez l'univers de la Fondation SCP et les caractéristiques des SCP.</li>
-                <li>Créez des personnages cohérents avec l'univers et évitez les personnages trop puissants.</li>
-                <li>Interagissez de manière respectueuse avec les autres joueurs et leurs personnages.</li>
-                <li>Évitez le méta-jeu, c'est-à-dire utiliser des informations que votre personnage ne pourrait pas connaître.</li>
-                <li>Respectez les décisions des administrateurs et des modérateurs concernant le jeu.</li>
-                <li>Participez activement aux scénarios et aux discussions pour enrichir l'expérience de jeu.</li>
-                <li>Utilisez un langage approprié et évitez les comportements toxiques ou offensants.</li>
-                <li>Adaptez votre personnage en fonction des événements du RP et des interactions avec les autres joueurs.</li>
-                <li>Respectez les règles de sécurité et de confidentialité concernant les informations sensibles du RP.</li>
-                <li>Amusez-vous et profitez de l'expérience collaborative que propose le RP SCP !</li>
-            </ol>
-        </div>
-        <button class="accordion" aria-expanded="false" aria-controls="exPanel">Exemples et Archives</button>
-        <div class="panel" id="exPanel">
-            <ol>
-                <li>
-                    <strong>Exemple de création de personnage :</strong>
-                    <ul>
-                        <li>
-                            <strong>Nom :</strong> Dr. Éloïse Martin<br>
-                            <strong>Rôle :</strong> Chercheuse senior<br>
-                            <strong>Âge :</strong> 34 ans<br>
-                            <strong>Apparence :</strong> Cheveux bruns attachés, lunettes rondes, blouse blanche<br>
-                            <strong>Traits de caractère :</strong> Curieuse, méthodique, empathique<br>
-                            <strong>Biographie :</strong> Après un doctorat en biologie moléculaire, Éloïse a rejoint la Fondation SCP pour étudier les anomalies génétiques. Elle est passionnée par la compréhension des SCP biologiques et cherche toujours à protéger ses collègues.<br>
-                            <strong>Compétences :</strong> Analyse scientifique, gestion de crise, rédaction de rapports<br>
-                            <strong>Motivations :</strong> Découvrir l'origine des SCP biologiques et assurer la sécurité du personnel.
-                        </li>
-                        <li>
-                            <strong>Nom :</strong> Agent Lucas Moreau<br>
-                            <strong>Rôle :</strong> Agent de sécurité mobile<br>
-                            <strong>Âge :</strong> 28 ans<br>
-                            <strong>Apparence :</strong> Grand, athlétique, uniforme tactique<br>
-                            <strong>Traits de caractère :</strong> Courageux, loyal, pragmatique<br>
-                            <strong>Biographie :</strong> Ancien militaire, Lucas a été recruté par la Fondation après avoir survécu à une rencontre inexpliquée. Il excelle dans les missions de récupération et de confinement.<br>
-                            <strong>Compétences :</strong> Combat rapproché, tactiques d’intervention, premiers secours<br>
-                            <strong>Motivations :</strong> Protéger la population et ses collègues des menaces anormales.
-                        </li>
-                        <li>
-                            <strong>Nom :</strong> D-9341<br>
-                            <strong>Rôle :</strong> Personnel de Classe D<br>
-                            <strong>Âge :</strong> 41 ans<br>
-                            <strong>Apparence :</strong> Cheveux courts, combinaison orange<br>
-                            <strong>Traits de caractère :</strong> Méfiant, débrouillard, résilient<br>
-                            <strong>Biographie :</strong> Ancien détenu, D-9341 a été affecté à des expériences sur des SCP dangereux. Il tente de survivre en se montrant utile aux chercheurs.<br>
-                            <strong>Compétences :</strong> Adaptation, observation, discrétion<br>
-                            <strong>Motivations :</strong> Survivre et obtenir une éventuelle réduction de peine.
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Exemple d’archive SCP :</strong>
-                    <ul>
-                        <li>
-                            <strong>SCP-173</strong><br>
-                            <strong>Classe :</strong> Euclide<br>
-                            <strong>Description :</strong> Statue en béton animée, extrêmement dangereuse. Se déplace rapidement lorsqu’elle n’est pas observée. Le contact visuel doit être maintenu en permanence.<br>
-                            <strong>Procédures de confinement :</strong> SCP-173 doit être contenu dans une cellule verrouillée. Trois membres du personnel doivent entrer ensemble et maintenir un contact visuel constant.<br>
-                            <strong>Incidents notables :</strong> Plusieurs membres du personnel ont été tués lors d’un clignement d’œil accidentel.
-                        </li>
-                        <li>
-                            <strong>SCP-049</strong><br>
-                            <strong>Classe :</strong> Euclide<br>
-                            <strong>Description :</strong> Humanoïde vêtu d’une robe de médecin de peste. Peut provoquer la mort par simple contact et tente de "guérir" ses victimes.<br>
-                            <strong>Procédures de confinement :</strong> SCP-049 doit être contenu dans une cellule sécurisée. Toute interaction nécessite l’approbation d’un chercheur de niveau 2 minimum.<br>
-                            <strong>Incidents notables :</strong> A transformé plusieurs membres du personnel en "patients" lors d’une brèche de confinement.
-                        </li>
-                        <li>
-                            <strong>SCP-999</strong><br>
-                            <strong>Classe :</strong> Sûr<br>
-                            <strong>Description :</strong> Masse gélatineuse orange, extrêmement amicale et capable d’induire un sentiment de bonheur intense.<br>
-                            <strong>Procédures de confinement :</strong> SCP-999 est autorisé à se déplacer librement dans le site sous surveillance.<br>
-                            <strong>Incidents notables :</strong> Utilisé pour améliorer le moral du personnel.
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Exemple de fiche de mission RP :</strong>
-                    <ul>
-                        <li>
-                            <strong>Titre :</strong> Récupération de SCP-███<br>
-                            <strong>Objectif :</strong> Localiser et contenir un SCP récemment signalé dans une zone urbaine.<br>
-                            <strong>Équipe :</strong> Dr. Martin (chef scientifique), Agent Moreau (sécurité), D-9341 (sujet de test)<br>
-                            <strong>Résumé :</strong> L’équipe doit enquêter sur des phénomènes anormaux, sécuriser la zone, et ramener l’anomalie au site pour étude.<br>
-                            <strong>Risques :</strong> Présence de civils, comportement imprévisible du SCP, risques de brèche de confinement.<br>
-                            <strong>Déroulement :</strong> Préparation de l’équipement, infiltration, observation, capture, extraction.
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Exemple de fiche d’objet anormal (hors SCP officiel) :</strong>
-                    <ul>
-                        <li>
-                            <strong>Objet :</strong> Lampe à lave anormale<br>
-                            <strong>Description :</strong> Lorsqu’elle est allumée, la lampe projette des ombres qui prennent vie et imitent les actions des personnes présentes.<br>
-                            <strong>Effets :</strong> Les ombres peuvent interagir avec des objets physiques de faible masse.<br>
-                            <strong>Procédures de confinement :</strong> Garder la lampe éteinte et sous surveillance dans un coffre verrouillé.
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Exemple de journal de personnage :</strong>
-                    <ul>
-                        <li>
-                            <strong>Entrée du Dr. Martin :</strong> "Aujourd’hui, nous avons observé un comportement inattendu de SCP-999. Il semble réagir positivement à la musique classique. Je vais proposer une série de tests pour étudier cette réaction."<br>
-                            <strong>Entrée de l’Agent Moreau :</strong> "Mission de récupération réussie. Aucun blessé à déplorer. Le SCP était plus coopératif que prévu, mais restons vigilants."<br>
-                            <strong>Entrée de D-9341 :</strong> "Je ne comprends toujours pas pourquoi ils m’ont choisi pour cette expérience. J’espère juste survivre un jour de plus."
-                        </li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
-        <button class="accordion" aria-expanded="false" aria-controls="resPanel">Ressources utiles</button>
-        <div class="panel" id="resPanel">
-            <h2>Ressources utiles</h2>
-            <ul>
-                <li><a href="https://scp-wiki.wikidot.com/">SCP Wiki</a> - La source principale pour tout ce qui concerne la Fondation SCP.</li>
-                <li><a href="https://scp-roleplay.com/">SCP Roleplay</a> - Une plateforme dédiée au RP SCP avec des forums et des ressources.</li>
-                <li><a href="https://www.reddit.com/r/SCP/">Reddit SCP</a> - Une communauté active pour discuter et partager des histoires SCP.</li>
-                <li><a href="https://discord.gg/scp">Discord SCP</a> - Rejoignez le serveur Discord pour interagir avec d'autres fans et joueurs.</li>
-                <li><a href="https://www.youtube.com/results?search_query=scp+roleplay">YouTube SCP Roleplay</a> - Des vidéos et des streams de RP SCP pour s'inspirer et apprendre.</li>
-                <li><a href="https://www.twitch.tv/directory/game/SCP%20Roleplay">Twitch SCP Roleplay</a> - Suivez des streamers qui jouent au RP SCP en direct.</li>
-                <li><a href="https://www.fandom.com/f/scp">Fandom SCP</a> - Une communauté de fans avec des articles et des discussions sur la Fondation SCP.</li>
-                <li><a href="https://scp-int.wikidot.com/">SCP International</a> - Une version internationale du SCP Wiki avec des traductions et des histoires du monde entier.</li>
-                <li><a href="https://scp-foundation.fandom.com/wiki/SCP_Foundation_Wiki">SCP Foundation Wiki</a> - Une autre version du wiki avec des articles et des histoires sur la Fondation SCP.</li>
-                <li><a href="https://www.patreon.com/scp">SCP Patreon</a> - Soutenez la Fondation SCP et accédez à du contenu exclusif.</li>
-                <li><a href="https://scp-catalogue.com/">SCP Catalogue</a> - Un site pour explorer et cataloguer les SCP avec des descriptions détaillées.</li>
-                <li><a href="https://scp-archive.wikidot.com/">SCP Archive</a> - Un archive des SCP avec des histoires et des articles classés.</li>
-                <li><a href="https://discord.gg/RqM7Nvam2R">Notre Discord</a> - Rejoignez notre serveur Discord pour discuter et jouer avec d'autres fans et joueurs de scp rp.</li>
-            </ul>
-        </div>
-        <button class="accordion" aria-expanded="false" aria-controls="conclPanel">Conclusion</button>
-        <div class="panel" id="conclPanel">
-            <h2>Conclusion</h2>
-            <p>ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 est une aventure passionnante dans l'univers de la Fondation SCP, où les joueurs peuvent explorer des thèmes de science-fiction, d'horreur et de mystère. En suivant les règles du RP SCP et en créant des personnages cohérents, les participants peuvent vivre des histoires immersives et collaboratives.</p>
-            <p>Rejoignez-nous pour découvrir les secrets de la Fondation SCP et participer à des scénarios captivants. Que vous soyez un joueur expérimenté ou un novice, il y a une place pour vous dans cette communauté dynamique et créative.</p>
-            <p>Nous vous attendons avec impatience pour partager des histoires, développer des personnages et vivre des aventures inoubliables dans le monde du RP SCP. Ensemble, nous pouvons créer des récits mémorables et enrichir l'univers de la Fondation SCP.</p>
-            <p>Merci de votre intérêt pour ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝, et nous espérons vous voir bientôt dans nos aventures de jeu de rôle !</p>
-        </div>
-    </div>
-    <!-- Discord logo fixed at the bottom right -->
-    <a href="https://discord.gg/RqM7Nvam2R" target="_blank" style="position:fixed;right:24px;bottom:24px;z-index:1000;">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" class="discord-float" style="width:48px;height:48px;background:#5865F2;border-radius:50%;padding:8px;box-shadow:0 2px 8px rgba(0,0,0,0.3);">
-    </a>
-    <!-- Scroll to top button -->
-    <button id="toTopBtn" title="Remonter en haut" aria-label="Remonter en haut">↑</button>
-    <footer>
-        &copy; 2025 ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 | 
-        <a href="#descPanel">Description</a> | 
-        <a href="#partPanel">Participer</a> | 
-        <a href="#charPanel">Personnage</a> | 
-        <a href="#rulesPanel">Règles</a> | 
-        <a href="#resPanel">Ressources</a>
-        <br>
-        Site conçu, développé et optimisé par <a href="https://nexor.studio" target="_blank" style="color:#ff0707;">NeXoR.Studio</a> | Hébergement sécurisé | Support technique : <a href="mailto:support@nexor.studio" style="color:#ff0707;">support@nexor.studio</a>
-        <br>
-        <span style="font-size:0.85em;">Dernière mise à jour : Juin 2025 | Version 1.2.0 | Compatible mobile, tablette et desktop | Accessibilité renforcée | Optimisé SEO & réseaux sociaux</span>
-    </footer>
-    <script>
-        // ... scripts inchangés ...
-        // Welcome message with time-based greeting
-        function getGreeting() {
-            const hour = new Date().getHours();
-            if (hour < 12) return "Bonjour et bienvenue sur ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 !";
-            if (hour < 18) return "Bon après-midi et bienvenue sur ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 !";
-            return "Bonsoir et bienvenue sur ℂ𝕆𝕄ℙ𝕃𝔼𝕏𝔼 𝟚𝟝 !";
-        }
-        document.getElementById('welcomeMsg').textContent = getGreeting();
-
-        // Accordion logic with smooth transition and accessibility
-        document.querySelectorAll('.panel').forEach(panel => {
-            panel.style.maxHeight = '0';
-            panel.style.display = 'block';
-        });
-
-        document.querySelectorAll('.accordion').forEach((btn, idx) => {
-            btn.addEventListener('click', function() {
-                const panel = btn.nextElementSibling;
-                const isOpen = panel.classList.contains('show');
-                // Close all other panels
-                document.querySelectorAll('.panel.show').forEach(p => {
-                    if (p !== panel) {
-                        p.style.maxHeight = p.scrollHeight + 'px'; // force reflow
-                        setTimeout(() => {
-                            p.style.maxHeight = '0';
-                            p.classList.remove('show');
-                            p.previousElementSibling.setAttribute('aria-expanded', 'false');
-                        }, 10);
-                    }
-                });
-                if (!isOpen) {
-                    panel.classList.add('show');
-                    panel.style.maxHeight = panel.scrollHeight + 'px';
-                    btn.setAttribute('aria-expanded', 'true');
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + 'px'; // force reflow
-                    setTimeout(() => {
-                        panel.style.maxHeight = '0';
-                        panel.classList.remove('show');
-                        btn.setAttribute('aria-expanded', 'false');
-                    }, 10);
-                }
-            });
-        });
-
-        // Random RP tip
-        const tips = [
-            "Décrivez les émotions de votre personnage pour plus d'immersion.",
-            "Respectez toujours l'univers SCP et les autres joueurs.",
-            "N'hésitez pas à demander conseil aux vétérans du RP.",
-            "Faites évoluer votre personnage selon les événements du RP.",
-            "La collaboration rend les histoires plus riches et surprenantes.",
-            "Gardez une trace des actions importantes dans un journal de personnage.",
-            "Variez vos interactions : dialogue, action, réflexion.",
-            "Laissez de la place à l'imprévu et à l'échec, cela crée du jeu !",
-            "Participez activement aux discussions hors RP pour renforcer la communauté.",
-            "Proposez des idées de scénarios ou d'anomalies originales.",
-            "Créez des liens entre les personnages pour enrichir les intrigues.",
-            "Utilisez des descriptions sensorielles pour rendre les scènes vivantes.",
-            "Acceptez les conséquences des actions de votre personnage.",
-            "Faites preuve de créativité dans la résolution des problèmes.",
-            "Restez cohérent avec la personnalité et l’histoire de votre personnage.",
-            "Impliquez les autres joueurs dans vos idées de scénario.",
-            "Utilisez le suspense pour maintenir l’intérêt du groupe.",
-            "Ne monopolisez pas l’attention, laissez de la place aux autres.",
-            "Réagissez aux événements même si votre personnage n’est pas au centre.",
-            "Adaptez votre jeu selon le ton de la scène (dramatique, humoristique, etc.).",
-            "Évitez le powergaming : ne rendez pas votre personnage invincible.",
-            "Soyez ouvert aux rebondissements inattendus proposés par le MJ ou les autres joueurs.",
-            "Prenez des notes sur les éléments importants du RP.",
-            "Faites évoluer vos relations avec les autres personnages au fil du temps.",
-            "Respectez le rythme du jeu et soyez patient lors des temps morts.",
-            "Proposez des flashbacks pour explorer le passé de votre personnage.",
-            "Utilisez des objets ou accessoires pour personnaliser votre jeu.",
-            "Partagez vos inspirations ou références avec le groupe.",
-            "Encouragez les nouveaux joueurs à participer.",
-            "Testez différents styles de jeu pour trouver ce qui vous plaît.",
-            "Restez attentif aux réactions des autres pour ajuster votre jeu.",
-            "Proposez des défis ou des dilemmes moraux à votre personnage.",
-            "Utilisez l’humour avec modération pour détendre l’atmosphère.",
-            "Faites preuve d’empathie envers les autres joueurs.",
-            "Ne forcez pas les autres à suivre votre scénario.",
-            "Acceptez la critique constructive pour progresser.",
-            "Variez les lieux et les ambiances dans vos scènes.",
-            "Utilisez la musique ou des images pour vous inspirer.",
-            "Gardez à l’esprit les objectifs de votre personnage.",
-            "Participez à la création de l’univers avec des idées originales.",
-            "Respectez la confidentialité des intrigues en cours.",
-            "Proposez des épilogues ou des conclusions à vos histoires.",
-            "Soyez fair-play en cas de conflit entre personnages.",
-            "Faites preuve de bienveillance envers la communauté."
-        ];
-        const tipBtn = document.getElementById('randomTipBtn');
-        const tipDiv = document.getElementById('randomTip');
-        const closeTipBtn = document.getElementById('closeTipBtn');
-        tipBtn.addEventListener('click', function() {
-            const tip = tips[Math.floor(Math.random() * tips.length)];
-            tipDiv.textContent = tip;
-            tipDiv.style.display = 'block';
-            closeTipBtn.style.display = 'inline-block';
-            tipBtn.setAttribute('aria-expanded', 'true');
-        });
-        closeTipBtn.addEventListener('click', function() {
-            tipDiv.style.display = 'none';
-            closeTipBtn.style.display = 'none';
-            tipBtn.setAttribute('aria-expanded', 'false');
-        });
-
-        // Scroll to top button
-        const toTopBtn = document.getElementById('toTopBtn');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                toTopBtn.style.display = 'block';
-            } else {
-                toTopBtn.style.display = 'none';
-            }
-        });
-        toTopBtn.addEventListener('click', function() {
-            window.scrollTo({top:0, behavior:'smooth'});
-        });
-    </script>
-    <!-- Sécurité JS côté client (protection basique, ne remplace pas la sécurité serveur) -->
-    <script>
-        // ... sécurité JS inchangée ...
-        (function() {
-            const origSet = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML').set;
-            Object.defineProperty(Element.prototype, 'innerHTML', {
-                set: function(value) {
-                    if (/<script[\s>]/i.test(value)) {
-                        throw new Error("Tentative d'injection de script bloquée.");
-                    }
-                    origSet.call(this, value);
-                }
-            });
-        })();
-
-        document.addEventListener('click', function(e) {
-            let t = e.target;
-            while (t && t.tagName !== 'A' && t !== document.body) t = t.parentElement;
-            if (t && t.tagName === 'A') {
-                const href = t.getAttribute('href');
-                if (href && href.trim().toLowerCase().startsWith('javascript:')) {
-                    e.preventDefault();
-                    alert("Lien javascript bloqué pour votre sécurité.");
-                }
-            }
-        }, true);
-
-        window.addEventListener('dragover', function(e) { e.preventDefault(); }, false);
-        window.addEventListener('drop', function(e) { e.preventDefault(); }, false);
-
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (
-                e.key === "F12" ||
-                (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "C")) ||
-                (e.ctrlKey && (e.key === "U" || e.key === "S"))
-            ) {
-                e.preventDefault();
-            }
-        });
-
-        const origAppendChild = Element.prototype.appendChild;
-        Element.prototype.appendChild = function(child) {
-            if (child.tagName && child.tagName.toLowerCase() === 'script') {
-                throw new Error("Ajout de script bloqué.");
-            }
-            return origAppendChild.call(this, child);
-        };
-    </script>
-</body>
-</html>
+    # File or Directory to do yamllint on
+    yamllint_file_or_dir: # optional, default is .
+    # Use Strict
+    yamllint_strict: # optional, default is 0
+    # Custom yamllint config path
+    yamllint_config_filepath: # optional, default is 
+    # Custom configuration (as YAML source)
+    yamllint_config_datapath: # optional, default is 
+    # format for parsing output
+    yamllint_format: # optional, default is 
+    # Comment yamllint output
+    yamllint_comment: # optional, default is false
+                 
